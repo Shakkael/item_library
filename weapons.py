@@ -18,7 +18,7 @@ class Item:
         self.modifiers[tag][level] = desc
 
     def toJSON(self):
-        return {self.name: {"name": self.name,"type": self.type,"tags": self.tags, "modifiers": self.modifiers}}
+        return {self.name: {"name": self.name, "desc": self.desc, "type": self.type,"tags": self.tags, "modifiers": self.modifiers}}
 
 def save(item, filename='items.json'):
     data = load(filename)
@@ -122,9 +122,9 @@ while True:
                 print("You need to type in a number.\n")
 
         for level in range(int(modifier_levels)):
-            print(f"--///{level}///--\n")
-            modifier_desc = input(f"Write in description for this modifier level: {level} \n")
-            to_dict = {level: modifier_desc}
+            print(f"--///{level+1}///--\n")
+            modifier_desc = input(f"Write in description for this modifier level: {level+1} \n")
+            to_dict = {level+1: modifier_desc}
 
             try:
                 modifiers_dict[modifier_tag][level] = modifier_desc
